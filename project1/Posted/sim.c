@@ -1,6 +1,6 @@
 #include "global.h"
 #include <stdlib.h>
-// sim means simulate? 
+// sim means simulate?
 
 extern void displayRegisterFile();
 
@@ -10,9 +10,7 @@ extern void reset();
 
 extern void fetchstage(), issuestage(), executestage(), memstage(), writestage(), syncstage();
 
-
 PROCESS *fetch, *issue, *execute, *mem, *write, *sync;
-
 
 unsigned MEM[MEM_SIZE];
 unsigned insMEM[INSTR_MEM_SIZE];
@@ -34,8 +32,8 @@ unsigned INSTRUCTION;
 double timeInsCompleted;
 int numInsCompleted;
 
-
-void UserMain(int argc, char *argv[]) {
+void UserMain(int argc, char *argv[])
+{
     int i, j;
 
     reset();
@@ -68,8 +66,7 @@ void UserMain(int argc, char *argv[]) {
 
     printf("\n\n*******  CREATED ALL PROCESSES  **********\n\n");
 
-// Initialization is done, now start the simulation
-
+    // Initialization is done, now start the simulation
 
     DriverRun(MAX_SIMULATION_TIME);
     printf("\n\n*********************************************************\n\n");
@@ -81,7 +78,6 @@ void UserMain(int argc, char *argv[]) {
 
     // Uncomment if you want to see destination array in Programs 2 and 3
 
-    //	 printf("\nFinal Destination Memory Array\n");
-    //       displayMemory(BASE_ARRAY_DEST, NUM_ITERATIONS);
+    printf("\nFinal Destination Memory Array\n");
+    displayMemory(BASE_ARRAY_DEST, NUM_ITERATIONS);
 }
-

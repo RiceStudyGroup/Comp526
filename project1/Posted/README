@@ -2,6 +2,10 @@ To compile:
 
 % gcc sim.c fetch.c issue.c exec.c mem.c write.c sync.c utils.c  <PROGRAM FILE> ./yacsim.o -lm -o <OUTPUT FILE> 
 
+gcc sim.c fetch.c issue.c exec.c mem.c write.c sync.c utils.c  program1.c ./yacsim.o -lm -o program1
+gcc sim.c fetch.c issue.c exec.c mem.c write.c sync.c utils.c  program2.c ./yacsim.o -lm -o program2
+gcc sim.c fetch.c issue.c exec.c mem.c write.c sync.c utils.c  program3.c ./yacsim.o -lm -o program3
+
 <PROGRAM FILE> is one of program1.c, program2.c or program3.c 
 <OUTPUT FILE> is whatever you choose to name your executable
 

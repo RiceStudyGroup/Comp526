@@ -26,7 +26,7 @@ loadProgram() {
     insMEM[1] = 0x18200200;        // STORE  R0, 512(R1)           MEM[index+512] = value
     insMEM[2] = 0x1508FFFF;       // ADDI  R8, R8, -1              count--
     insMEM[3] = 0x14210001;       // ADDI  R1, R1, 1               index++
-    insMEM[4] = 0x2500FFE0;       // BNEZ R8  -20                  if (count != 0) goto COPY
+    insMEM[4] = 0x2500FFEC;       // BNEZ R8  -20                  if (count != 0) goto COPY
     insMEM[5] = 0x00000000;       // NOP
     insMEM[6] = 0x28000000;       // HALT
 }
