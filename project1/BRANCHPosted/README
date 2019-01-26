@@ -1,0 +1,12 @@
+Changes from PART 1:
+
+Stubs for functions to be coded by you have been included in files "fetch.c", "issue.c" and "mem.c"
+
+For  program1.c, program2.c and program3.c use the optimized versions that you wrote in PART 1 as the
+workload.
+
+Pipeline registers now have additional fields to convey  branch-related  information from the ISSUE and MEM
+stages to the FETCH stage. (See the template in global.h).
+
+
+

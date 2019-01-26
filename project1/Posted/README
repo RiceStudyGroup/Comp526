@@ -1,0 +1,28 @@
+To compile:
+
+% gcc sim.c fetch.c issue.c exec.c mem.c write.c sync.c utils.c  <PROGRAM FILE> ./yacsim.o -lm -o <OUTPUT FILE> 
+
+<PROGRAM FILE> is one of program1.c, program2.c or program3.c 
+<OUTPUT FILE> is whatever you choose to name your executable
+
+
+global.h contains definitions and constant values
+For this assignemnt you will only need to change the constant NUM_ITERATIONS to run the programs for different array sizes
+
+
+program1.c: Adds together  integers of array1.
+
+program2.c: Performs element-wise addition of two integer arrays array1 and array2 and stores the results in array3.
+
+program3.c: Copies  integers from array1 to array2.
+
+
+The size of the vectors is changed by the constant NUM_ITERATIONS in "global.h"
+The  base addresses of arrays  array1, array2 and array3 are defined by the constants  BASE_ARRAY_SRC1, BASE_ARRAY_SRC2, BASE_ARRAY_DEST respectively in "global.h".
+The maximum size of the arrays is 256 integers.
+The arrays are initialized as follows:
+array1: 500, 501, 502, ...
+array2: 756, 757, 758, ... 
+array3: 1012, 1013, 1014, ....
+
+The reset() function in utils.c loads the program into instruction memory, initializes the arrays, sets the register values, and clears internal pipeline registers.
