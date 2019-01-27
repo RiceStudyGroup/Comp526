@@ -6,6 +6,9 @@ The decoded fields and register values are stored in different fields of the sha
 The writeback flag is used to indicate that this instruction will write to a destination register destRegister in the WRITE stage. 
 The control field is a set of bits indicating the instruction (bit 0, 1, 2, 3, or 4 are set if the instruction is ADD, LOAD, 
 STORE, BNE, or ADDI respectively).
+
+isBranchInstrIssue and branchTargetAddressIssue which are set in the ISSUE
+
 */
 
 extern struct pipelineReg PR[];
@@ -83,6 +86,23 @@ decode(unsigned instr, int *opCode, int *rs, int *rt, int *rd, int *offset, int 
 
 
 checkAndHandleSpeculativeBranch() {
+    /*
+    In the ISSUE stage, after decoding check if the instruction is BNE. 
+    If so set the isBranchInstruction and branchTargetAddressIssue fields 
+    of SHADOW PR[1]. The first is a flag that needs to set to TRUE if the 
+    instruction is BNE and FALSE otherwise. The second is the target address 
+    of the branch from where instruction will speculatively continue. These 
+    need to be done by completing the stub checkAndHandleSpeculativeBranch() 
+    in issue.c.
+    */
+   if(SHADOW_PR[1].opCode == BNEZ){
+       SHADOW_PR[1].isBranchInstruction = true;
+       SHADOW_PR[1].branchTargetAddressIssue =  SHADOW_PR[1].PC4  + SHADOW_PR[1].offset
+   }else{
+       SHADOW_PR[1].isBranchInstruction = false;
+   }
+
+
 
     // If instruction is a Banch instruction set "isBranchInstrIssue" in my SHADOW_PR.
     // Set "BranchTargetAddressIssue" in my SHADOW_PR with the target addressof the branch.

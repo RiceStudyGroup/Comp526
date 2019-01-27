@@ -7,6 +7,7 @@ result field of the pipeline register PR[2] and the data for a store from the op
 field (which will be the value of register rt) of PR[2], and performs the read (write) 
 from (to) memory. For a LOAD, the value read from memory is placed in the shadow pipeline 
 register SHADOW_PR[3].
+
 */
 
 extern struct pipelineReg PR[];
@@ -37,6 +38,26 @@ void memstage() {
 
 
 handleSpeculativeBranch() {
+    /*
+    In the Mem stage you must also check if the instruction is BNE and set the isBranchInstrMem 
+    flag of SHADOW_PR[3] appropriately. Also set conditionMem flag of SHADOW_PR[3] to TRUE if 
+    the branch was correctly speculated (i.e. branch should be taken) and FALSE otherwise, 
+    and set the inlinePCMem field of SHADOW PR[3] to the address of the inline instruction 
+    that must be executed if the speculation was incorrect. We will assume this to be the 
+    instruction immediately following the BNE instruction and re-fetch that instruction into 
+    the pipeline. (This takes care of corner cases as when a nontaken branch immediately follows 
+    a non-taken branch). Make all the changes in the stub handleSpeculativeBranch() in mem.c.
+    */
+
+    SHADOW_PR[3].isBranchInstrMem = true;
+    if(SHADOW_PR[3].result){
+        SHADOW_PR[3].conditionMem = true;
+        SHADOW_PR[3].inlinePCMem = SHADOW_PR[3].branchTargetAddressIssue;
+    }else{
+        SHADOW_PR[3].inlinePCMem = SHADOW_PR[3].PC4;
+        SHADOW_PR[3].conditionMem = false;
+    }
+
     // If Branch Instruction set "isBranchInstrMem" in my SHADOW_PR.
     // If speculation is correct set "conditionMem" to TRUE in my SHADOW_PR; else set it FALSE.
     // Set "inlinePCMem" in my SHADOW_PR to the next inline instruction to be executed (if speculation s incorrect)

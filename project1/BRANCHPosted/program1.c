@@ -19,6 +19,13 @@ loadProgram() {
     // The base address of the array is in Register R1
     // R8 is initialized  with the number of iterations n : Default is set at 5
 
+    insMEM[0] = 0x1508FFFF;       // ADDI  R8, R8, -1           count = count - 1;
+    insMEM[1] = 0x10200000;       // LOAD  R0,(R1)       top:  R0 = MEM[R1];
+    insMEM[2] = 0x14210001;       // ADDI  R1, R1, 1            R1 = R1 + 1;
+    insMEM[3] = 0x2500FFF0;       // BNEZ  R8  -20              if (count != 0) goto top
+    insMEM[4] = 0X04401000;       // ADD   R2, R2, R0           sum = sum + R0;
+    insMEM[5] = 0x00000000;       //  Do not remove. Needed to make HALT work correctly
+    insMEM[7] = 0x28000000;       // HALT
     // Use your optimized code from PART 1
 }
 

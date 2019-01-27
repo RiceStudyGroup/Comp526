@@ -25,9 +25,8 @@ extern unsigned PC;
 
 extern int numStallCycles;  // Statistics Counter
 
-
-
 void fetchstage() {
+
     int job_num;
     job_num = ActivityArgSize(ME) - 1;
 
@@ -40,12 +39,38 @@ void fetchstage() {
 
 }
 
-
 handleBranchSpeculation() {
     // If  there is a  speculated branch that can be  resolved (recorded by Mem stage in its shadow PR)
     // Nullify incorrect instructions in the pipeline.
     // If speculation was incorrect, resume inline execution (recorded by Mem stage in its shadow PR)
-    // TODO 
+    /*
+    Check if a Branch instruction is in the MEM stage (using SHADOW_PR[3]) and if so whether 
+    or not the branch was correctly speculated. Squash either 1 or 3 instructions in the 
+    appropriate Shadow Pipeline registers based on the speculation result. (You can create a 
+    NOP by copying the predefined “dummy” struct into the pipeline or shadow pipeline 
+    register you want to squash). If the speculation is correct set the flag updatePC to 
+    FALSE; else set this flag to TRUE and variable nextPC to the inline address computed 
+    by MEM.
+    */
+    if(SHADOW_PR[3].isBranchInstrIssue && SHADOW_PR[3].conditionMem){
+        // if a Branch instruction is in the MEM stage
+        // whether or not the branch was correctly speculated.
+
+        // how to squash 1 or 3 instructions in the appropriate Shadow Pipeline registers based on the speculation result???
+
+
+        // If the speculation is correct
+        updatePC = false;
+
+        // else
+        updatePC = true;
+        nextPC = SHADOW_PR[3].branchTargetAddressIssue;
+
+
+
+
+
+    }
 
     // If there is a branch that is being issued:
     // If so, set PC to the target address (recorded by Issue stage in its Shadow PR)

@@ -101,7 +101,7 @@ void reset() {
 void displayRegisterFile() {
     int i, j;
 
-    for (i = 0; i < NUM_REGISTERS / 4; i++) {
+    for (i = 0; i < NUM_REGISTERS / 4; i++) { // print 4 per line,
         for (j = 0; j < 4; j++)
             printf("REG[%d] : %d\t", i * 4 + j, REG_FILE[i * 4 + j]);
         printf("\n");
