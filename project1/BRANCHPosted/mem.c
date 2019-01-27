@@ -49,13 +49,14 @@ handleSpeculativeBranch() {
     a non-taken branch). Make all the changes in the stub handleSpeculativeBranch() in mem.c.
     */
 
-    SHADOW_PR[3].isBranchInstrMem = true;
     if(SHADOW_PR[3].result){
-        SHADOW_PR[3].conditionMem = true;
+        SHADOW_PR[3].isBranchInstrMem = TRUE;
+        SHADOW_PR[3].conditionMem = TRUE;
         SHADOW_PR[3].inlinePCMem = SHADOW_PR[3].branchTargetAddressIssue;
     }else{
+        SHADOW_PR[3].isBranchInstrMem = FALSE;
         SHADOW_PR[3].inlinePCMem = SHADOW_PR[3].PC4;
-        SHADOW_PR[3].conditionMem = false;
+        SHADOW_PR[3].conditionMem = FALSE;
     }
 
     // If Branch Instruction set "isBranchInstrMem" in my SHADOW_PR.
