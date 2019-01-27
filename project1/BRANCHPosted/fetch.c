@@ -60,11 +60,20 @@ handleBranchSpeculation() {
 
 
         // If the speculation is correct
-        updatePC = false;
+        if (SHADOW_PR[3].result){
+            updatePC = TRUE;
+            PC = SHADOW_PR[3].branchTargetAddressIssue;
+
+
+            INSTRUCTION = insMEM[PC / 4]; // where does these instruction from? 
+            SHADOW_PR[0].INSTRUCTION = INSTRUCTION;
+            SHADOW_PR[0].PC4 = PC + 4;
+        }else{
+
+            updatePC = FALSE;
+        }
 
         // else
-        updatePC = true;
-        nextPC = SHADOW_PR[3].branchTargetAddressIssue;
 
 
 
