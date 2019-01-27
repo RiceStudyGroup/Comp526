@@ -96,8 +96,8 @@ checkAndHandleSpeculativeBranch() {
     in issue.c.
     */
    if(SHADOW_PR[1].opCode == BNEZ){
-       SHADOW_PR[1].isBranchInstruction = TRUE;
-       SHADOW_PR[1].branchTargetAddressIssue =  SHADOW_PR[1].PC4  + SHADOW_PR[1].offset
+       SHADOW_PR[1].isBranchInstrIssue = TRUE;
+       SHADOW_PR[1].branchTargetAddressIssue =  SHADOW_PR[1].PC4  + SHADOW_PR[1].offset;
    }else{
        SHADOW_PR[1].isBranchInstruction = FALSE;
    }
