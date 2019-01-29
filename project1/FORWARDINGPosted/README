@@ -1,0 +1,25 @@
+You will need to implement stubs in the files  "issue.c" and "exec.c"
+to support forwarding.
+
+Branch instructions are handled as in the base solution by updating the PC in
+the MEM stage. That is, there is no optimization for speculation. You will have
+to add NOPs to the programs to handle control dependencies.
+However, after you implement the forwarding mechanisms, there should be no
+NOPs needed (or allowed) for data dependencies.
+
+The programs do the same functions as before but the instruction order has  been changed to 
+stress forwarding. Do not change the programs (besides adding NOPs for branches).
+
+
+The file "sync.c" has been changed to implement stalls. If you set the "stallIF"
+signal to TRUE in issue.c, it will introduce a stall in the next cycle.
+
+speculation
+
+1. 推测
+2. 学说
+3. 熟思
+
+1. no NOPs for other operations
+2. add NOPs for branches. 
+3. modify the issue.c and exec.c

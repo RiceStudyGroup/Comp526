@@ -1,17 +1,17 @@
 #include "global.h"
 /*
-fetch stage, fetch the instruction and update pc. 
-in the issue stage, decode the instruction. 
+fetch stage, fetch the instruction and update pc.
+in the issue stage, decode the instruction.
 
-rs, 
-rt, 
+rs,
+rt,
 write back flag,
-dest register, 
-control, indicate the instruction, 
-0 add 
+dest register,
+control, indicate the instruction,
+0 add
 1 load
 2 store
-3 bne 
+3 bne
 4 addi
 sth halt
 
@@ -114,7 +114,7 @@ do_issue() {
     unsigned control;  // Bit fields -- ALU2op (bit 0), LD (bit 1), SD (bit 2)  BNEZ (bit 3) ALU1op (bit 4)
     unsigned instr = PR[0].INSTRUCTION;
 
-    // decode the instruction into opCode and so on. 
+    // decode the instruction into opCode and so on.
     decode(instr, &opCode, &rs, &rt, &rd, &offset, &control);
 
     SHADOW_PR[1] = PR[0];
@@ -134,4 +134,3 @@ do_issue() {
     }
 
 }
-

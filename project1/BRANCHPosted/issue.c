@@ -99,7 +99,7 @@ checkAndHandleSpeculativeBranch() {
        SHADOW_PR[1].isBranchInstrIssue = TRUE;
        SHADOW_PR[1].branchTargetAddressIssue =  SHADOW_PR[1].PC4  + SHADOW_PR[1].offset;
    }else{
-       SHADOW_PR[1].isBranchInstruction = FALSE;
+       SHADOW_PR[1].isBranchInstrIssue = FALSE;
    }
 
     // If instruction is a Banch instruction set "isBranchInstrIssue" in my SHADOW_PR.
