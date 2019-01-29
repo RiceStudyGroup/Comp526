@@ -30,5 +30,7 @@ do_write() {
  destReg = PR[3].destReg;
   if (PR[3].writeBack)
    REG_FILE[destReg] = PR[3].result;   
+
+    displayRegisterFile();
 }
 

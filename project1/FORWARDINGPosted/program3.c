@@ -27,7 +27,7 @@ loadProgram() {
   insMEM[3] = 0x14210001;       // ADDI  R1, R1, 1              index  = index + 1;
   insMEM[4] = 0x2500FFEC;       // BNEZ R8  -20                 if (count != 0) goto COPY 
   insMEM[5] = 0x00000000;       //NOP   
-  insMEM[6] = 0x28000000;       //HALT 
+  insMEM[8] = 0x28000000;       //HALT 
 
 }
 

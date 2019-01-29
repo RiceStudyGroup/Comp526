@@ -31,7 +31,7 @@ loadProgram() {
   insMEM[7] = 0x1508FFFF;       // ADDI  R8, R8, -1                count = count-1; 
   insMEM[8] = 0x2500FFDC;       // BNEZ R8  -36                    if (count != 0) goto top   
   insMEM[9] = 0x00000000;       //NOP   
-  insMEM[10] = 0x28000000;       //HALT 
+  insMEM[12] = 0x28000000;       //HALT 
 }
 
 
