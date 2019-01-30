@@ -87,7 +87,7 @@ checkDataHazard()
 
   // Signal "stallIF" is used by "sync.c" to decide whether to stall the IF and ISSUE stages or let
   // the pipeline flow normally.
-  if (PR[3].opCode == LOAD || PR[3].opCode == STORE) {
+  if (PR[1].opCode == LOAD || PR[1].opCode == STORE) {
     stallIF = TRUE;
   }else
   {

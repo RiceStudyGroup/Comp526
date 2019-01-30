@@ -57,10 +57,10 @@ void handleForwarding()
   Explictly set them to TRUE or FALSE in this function.
 
   */
-  forwardEX_MEMOp1 = PR[2].destReg == PR[1].srcReg1 && PR[2].INSTRUCTION != 0;
-  forwardEX_MEMOp2 = PR[2].destReg == PR[1].srcReg2 && PR[2].INSTRUCTION != 0;
-  forwardMEM_WBOp1 = PR[3].destReg == PR[1].srcReg1 && PR[3].INSTRUCTION != 0;
-  forwardMEM_WBOp2 = PR[3].destReg == PR[1].srcReg1 && PR[3].INSTRUCTION != 0;
+  forwardEX_MEMOp1 = PR[3].destReg == PR[1].srcReg1 && PR[3].INSTRUCTION != 0;
+  forwardEX_MEMOp2 = PR[3].destReg == PR[1].srcReg2 && PR[3].INSTRUCTION != 0;
+  forwardMEM_WBOp1 = PR[4].destReg == PR[1].srcReg1 && PR[4].INSTRUCTION != 0;
+  forwardMEM_WBOp2 = PR[4].destReg == PR[1].srcReg1 && PR[4].INSTRUCTION != 0;
 
 }
 
@@ -73,10 +73,10 @@ int getOperand1()
   // Currently the code  does not support forwarding and  always returns (i).
   // Use signals "forwardEX_MEMOp1" and "forwardMEM_WBOp1" set in "handleForwarding" above to select the correct operand.
   if (forwardMEM_WBOp1){
-    return PR[3].result;
+    return PR[4].result;
   }
   if (forwardEX_MEMOp1) {
-    return PR[2].result;
+    return PR[3].result;
   }
 
   return (PR[1].operand1);
@@ -91,10 +91,10 @@ int getOperand2()
   // Currently it does not support forwarding and  always returns (i).
   // Use signals "forwardEX_MEMOp2" and "forwardMEM_WBOp2" set in "handleForwarding" aboveto select the correct operand.
   if (forwardMEM_WBOp2){
-    return PR[3].result;
+    return PR[4].result;
   }
   if (forwardEX_MEMOp2) {
-    return PR[2].result;
+    return PR[3].result;
   }
   
   return (PR[1].operand2);
