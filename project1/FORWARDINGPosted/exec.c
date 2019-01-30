@@ -57,10 +57,10 @@ void handleForwarding()
   Explictly set them to TRUE or FALSE in this function.
 
   */
-  forwardEX_MEMOp1 = PR[2].destReg == PR[1].srcReg1;
-  forwardEX_MEMOp2 = PR[2].destReg == PR[1].srcReg2;
-  forwardMEM_WBOp1 = PR[3].destReg == PR[1].srcReg1;;
-  forwardMEM_WBOp2 = PR[3].destReg == PR[1].srcReg1;;
+  forwardEX_MEMOp1 = PR[2].destReg == PR[1].srcReg1 && PR[2].INSTRUCTION != 0;
+  forwardEX_MEMOp2 = PR[2].destReg == PR[1].srcReg2 && PR[2].INSTRUCTION != 0;
+  forwardMEM_WBOp1 = PR[3].destReg == PR[1].srcReg1 && PR[3].INSTRUCTION != 0;
+  forwardMEM_WBOp2 = PR[3].destReg == PR[1].srcReg1 && PR[3].INSTRUCTION != 0;
 
 }
 
