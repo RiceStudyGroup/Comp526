@@ -29,6 +29,19 @@ loadProgram() {
   insMEM[5] = 0x00000000;       //NOP   
   insMEM[8] = 0x28000000;       //HALT 
 
+/*
+  for (i = 0; i < BASE_ARRAY_DEST; i++)
+    // base array dest = 512
+    // so base[0] = 500
+    // base[512] = 1012
+    0   1   2   3       256 257 ... 
+    500 501 502 ...     756 757 ... 
+    MEM[i] = 500 + i;
+
+    255 -> 256 -> 257 ,,, 
+    -1 -> 0 -> 1 ,,, 
+
+    */
 }
 
 
@@ -36,16 +49,16 @@ loadProgram() {
 loadRegFile() {
   
   REG_FILE[0] = 0;  
-  REG_FILE[1] = BASE_ARRAY;  
-  REG_FILE[2] = BASE_ARRAY_SRC1;  
+  REG_FILE[1] = BASE_ARRAY;   // 0
+  REG_FILE[2] = BASE_ARRAY_SRC1;   // 0
       //   REG_FILE[2] = BASE_ARRAY_SRC1 - 1;  
   REG_FILE[3] = 1;    
-  REG_FILE[4] = BASE_ARRAY_SRC2;  
+  REG_FILE[4] = BASE_ARRAY_SRC2;   // 256
       //  REG_FILE[4] = BASE_ARRAY_SRC2 - 1;  
   REG_FILE[5] = 0;  
-  REG_FILE[6] = BASE_ARRAY_DEST;  
+  REG_FILE[6] = BASE_ARRAY_DEST;  // 512
   REG_FILE[7] = 0;  
-  REG_FILE[8] = NUM_ITERATIONS;
+  REG_FILE[8] = NUM_ITERATIONS; // 100
   REG_FILE[9] = -1;
 }
 
