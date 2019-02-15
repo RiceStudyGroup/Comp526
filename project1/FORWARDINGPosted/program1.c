@@ -40,7 +40,7 @@ loadRegFile() {
   REG_FILE[5] = 0;  
   REG_FILE[6] = BASE_ARRAY_DEST;  
   REG_FILE[7] = 0;  
-  REG_FILE[8] = NUM_ITERATIONS;
+  REG_FILE[8] = 100;
   REG_FILE[9] = -1;
 }
 
